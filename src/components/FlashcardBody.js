@@ -5,6 +5,8 @@ function FlashcardBody() {
     const [term, setTerm] = useState('');
     const [flashcards, setFlashcards] = useState([]);
     const [definition, setDefinition] = useState('');
+    const [date, setDate] = useState('');
+    const [Time, setTime] = useState('');
     function handleAddCard() {
         // This function will run when the Add Card button is clicked
         console.log("Add Card button clicked!");
@@ -13,7 +15,12 @@ function FlashcardBody() {
             alert("Please enter a term before adding a card.");
             return;
         }
-        const newFlashcard = { term: term };
+        const newFlashcard = {
+            term: term,
+            definition: definition,
+            date: date,
+            time: time
+        };
         console.log("New Flashcard object:", newFlashcard);
         setTerm('');
         setFlashcards([...flashcards, newFlashcard]);
@@ -33,10 +40,6 @@ function FlashcardBody() {
         if (dummyFlashcard.term) {
             console.log("The dummy card has a term:", dummyFlashcard1.term);
         }
-        const newFlashcard1 = {
-            term: term,
-            definition: definition,
-        };
         setDefinition('');
     }
 
@@ -74,6 +77,21 @@ function FlashcardBody() {
                         onChange={(e) => setDefinition(e.target.value)}>
 
                     </textarea>
+                </label>
+                <br /><br />
+                <label>
+                    Date:
+                    <input type="date"
+                        value={date}
+                        onChange={(e) => setDate(e.target.value)}
+                    />
+                </label>
+                <br /><br />
+                <label>
+                    Time:
+                    <input type="time"
+                        value={time}
+                        onChange={(e) => setTime(e.target.value)} />
                 </label>
                 <br /><br />
                 {
