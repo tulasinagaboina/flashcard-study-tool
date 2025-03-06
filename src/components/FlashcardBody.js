@@ -9,6 +9,8 @@ function FlashcardBody() {
     const [date, setDate] = useState('');
     const [Time, setTime] = useState('');
     function handleDeleteFlashcard(indexToRemove) {
+        const confirmed = window.confirm("Are you sure you want to delete this flashcard?");
+        if (!confirmed) return;
         const updatedFlashcards = flashcards.filter((_, index) => index !== indexToRemove);
         setFlashcards(updatedFlashcards);
     }
@@ -105,8 +107,14 @@ function FlashcardBody() {
                         < div key={index}>
                             <h3>{card.term}</h3>
                             <p>{card.definition}</p>
-                            {}
-                            <button onClick={() => handleDeleteFlashcard(index)}>Delete</button>
+                            { }
+                            <button onClick={() => {
+                                if (window.confirm("Are you sure?")) {
+                                    handleDeleteFlashcard(index);
+                                }
+                            }}>
+                                Delete
+                            </button>
                         </div>
                     ))
                 }
