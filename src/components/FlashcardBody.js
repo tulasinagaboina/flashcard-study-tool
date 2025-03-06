@@ -8,6 +8,10 @@ function FlashcardBody() {
     const [definition, setDefinition] = useState('');
     const [date, setDate] = useState('');
     const [Time, setTime] = useState('');
+    function handleDeleteFlashcard(indexToRemove) {
+        const updateFlashcards = flashcards.filter((_, index) => index !== indexToRemove);
+        setFlashcards(updatedFlashcards);
+    }
     function handleAddCard() {
         // This function will run when the Add Card button is clicked
         console.log("Add Card button clicked!");
