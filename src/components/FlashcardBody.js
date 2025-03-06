@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './FlashcardBody.css';
 
+const CurrentDateTime = new Date().toLocaleString();
 function FlashcardBody() {
     const [term, setTerm] = useState('');
     const [flashcards, setFlashcards] = useState([]);
@@ -19,7 +20,7 @@ function FlashcardBody() {
             term: term,
             definition: definition,
             date: date,
-            time: time
+            time: Time
         };
         console.log("New Flashcard object:", newFlashcard);
         setTerm('');
@@ -55,6 +56,7 @@ function FlashcardBody() {
     return (
         <main>
             <h2>Add a New Flashcard</h2>
+            <p>Current system date/time: {CurrentDateTime}</p>
             <form onSubmit={handleFormSubmit}>
                 <p>This is an User Interface.</p>
                 <h3>This is Important Theory</h3>
@@ -90,7 +92,7 @@ function FlashcardBody() {
                 <label>
                     Time:
                     <input type="time"
-                        value={time}
+                        value={Time}
                         onChange={(e) => setTime(e.target.value)} />
                 </label>
                 <br /><br />
