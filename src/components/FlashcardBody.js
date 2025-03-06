@@ -9,7 +9,7 @@ function FlashcardBody() {
     const [date, setDate] = useState('');
     const [Time, setTime] = useState('');
     function handleDeleteFlashcard(indexToRemove) {
-        const updateFlashcards = flashcards.filter((_, index) => index !== indexToRemove);
+        const updatedFlashcards = flashcards.filter((_, index) => index !== indexToRemove);
         setFlashcards(updatedFlashcards);
     }
     function handleAddCard() {
@@ -103,7 +103,10 @@ function FlashcardBody() {
                 {
                     flashcards.map((card, index) => (
                         < div key={index}>
-                            <p>{card.term}</p>
+                            <h3>{card.term}</h3>
+                            <p>{card.definition}</p>
+                            {}
+                            <button onClick={() => handleDeleteFlashcard(index)}>Delete</button>
                         </div>
                     ))
                 }
